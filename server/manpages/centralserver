@@ -1,0 +1,21 @@
+.\" Manpage for centralserver.
+.\" Contact cristianosstec@gmail.com to correct errors or typos.
+.TH man 8 "03 May 2021" "1.0" "centralserver man page"
+.SH NAME
+centralserver \- Runs a server and a webserver
+.SH SYNOPSIS
+centralserver [USERNAME]
+.SH DESCRIPTION
+centralserver is a server that allows controlling any device that wishes to connect following the protocol requirement
+.SH OPTIONS
+The nuseradd does not take any options. However, you can supply username.
+.SH PROTOCOL
+centralserver disposes of a protocol easy and friendly to implement
+.SH SEE ALSO
+useradd(8), passwd(5), nuseradd.debian(8) 
+.SH BUGS
+No known bugs.
+.SH AUTHORS
+Cristiano Silva de Souza(cristianosstec@gmail.com)
+.br
+Augusto Vieira(augustovieira18@gmail.com)
