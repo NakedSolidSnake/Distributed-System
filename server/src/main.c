@@ -1,38 +1,46 @@
-#include <server/server_tcp.h>
-#include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
-#include <stdbool.h>
+#include <fcntl.h> 
+#include <sys/stat.h> 
+#include <sys/types.h>
+#include <syslog.h>
+#include <server/udp.h>
 
-static int receive(char *buffer, int size);
-static int send(char *buffer, int *size);
+#define BUFFER_SIZE 1024
 
-int main()
-{
+void on_receive_message(const char *buffer, size_t buffer_size, void *data);
 
-  Server_t s = {
-    .socket = -1,
-    .port = "3404",
-    .cb.recv = receive,
-    .cb.send = send
-  };
+int main(int argc, char *argv[])
+{   
+    char server_buffer[BUFFER_SIZE];
 
-  Server_init(&s);
+    UDP_Server server = 
+    {
+        .buffer = server_buffer,
+        .buffer_size = BUFFER_SIZE,
+        .port = 1234,
+        .on_receive_message = on_receive_message
+    };
 
-  while(true)
-    Server_exec(&s);
+    UDP_Server_Init(&server);
+
+    while(true)
+	{
+		UDP_Server_Run(&server, NULL);
+	}
+    
+    return 0;
 }
 
-static int receive(char *buffer, int size)
+bool Init(void *object)
 {
-  printf("%s\n", buffer);
-  return 0;
+    (void)object; 
+    return true;
 }
 
-static int send(char *buffer, int *size)
+void on_receive_message(const char *buffer, size_t buffer_size, void *data)
 {
-  memset(buffer, 0, MAX_BUFFER_SEND_RECV);
-  snprintf(buffer, MAX_BUFFER_SEND_RECV, "Eita");
-  *size = strlen("Eita");
-  return 0;
+    printf("%s\n", buffer);
 }
