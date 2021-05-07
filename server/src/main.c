@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <syslog.h>
 #include <server/udp.h>
+#include <protocol.h>
 
 #define BUFFER_SIZE 1024
 
@@ -42,5 +43,18 @@ bool Init(void *object)
 
 void on_receive_message(const char *buffer, size_t buffer_size, void *data)
 {
-    printf("%s\n", buffer);
+  // Protocol protocol;
+  // memset(&protocol, 0, sizeof(protocol));
+
+  // memcpy(&protocol, buffer, sizeof(protocol));
+
+  
+  // printf("ID: %d\n", protocol.header.id);
+  // printf("Device: %s\n", protocol.header.device);
+  // printf("Sensor: %d\n", protocol.header.sensor);
+  // printf("Epoch: %d\n", protocol.header.data);
+  // printf("Size: %d\n", protocol.header.size);
+  // printf("Payload: %s\n", protocol.payload);  
+
+  printf("%s\n", buffer);
 }

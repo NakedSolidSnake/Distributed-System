@@ -1,0 +1,5 @@
+esp8266  - Sensor de Temperatura DHT11;
+? - Sensor de Pressão Atmosférica Barômetro BMP180;
+Não tem - Sensor de Qualidade do Ar MQ135;
+? - Sensor de Detecção de Chuva;
+? - Sensor de Luminosidade LDR;
