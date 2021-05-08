@@ -4,6 +4,7 @@
 typedef enum 
 {
     Temperature,
+    Humidity,
     Barometer,
     Air_Quality,
     Rain_Detector,
